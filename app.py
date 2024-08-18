@@ -6,10 +6,15 @@ app = Flask(__name__, template_folder="templates", static_folder="static", stati
 
 app.config['SECRET_KEY'] = 'hhLlPl"0aku}Yh0dk^FDJ-=Vq&V>;S=0h1~5j2Zct4M>X$:ZoWSJ-__(B3jLuV('
 
-app.config['MYSQL_HOST'] = 'localhost'
+# app.config['MYSQL_HOST'] = 'localhost'
+# app.config['MYSQL_USER'] = 'root'
+# app.config['MYSQL_PASSWORD'] = 'root'
+# app.config['MYSQL_DB'] = 'freshii'
+
+app.config['MYSQL_HOST'] = 'mysql.railway.internal'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_DB'] = 'freshii'
+app.config['MYSQL_PASSWORD'] = 'AlciOgdqfDZHzmBWPtuGDrYpuglPEqme'
+app.config['MYSQL_DB'] = 'railway'
 # mysql.init_app(app)
 mysql = MySQL(app)
 
