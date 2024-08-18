@@ -91,3 +91,13 @@ label {
 .form-group {
     margin-bottom: 20px;
 }
+
+.container-table {
+    height: 300px;
+    overflow-y: auto;
+}
+
+.thead-green {
+    background-color: #3e8e41;
+    color: white;
+}

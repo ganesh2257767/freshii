@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freshii</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Basic&family=Fira+Code:wght@300..700&display=swap"
-        rel="stylesheet">
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.css">
 
 </head>
@@ -18,7 +18,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="/img/Freshii_logo.svg.png" width="100" height="100" alt="Logo">
+                <img src="/img/Freshii_logo.svg.png" width="150" height="100" alt="Logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -127,6 +127,52 @@
             </div>
         </div>
     </form>
+    <div class="container my-5 py-5">
+        <div class="container-table">
+            <table class="table table-bordered table-striped">
+              <thead class="thead-green">
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">1 Cent</th>
+                  <th scope="col">5 Cents</th>
+                  <th scope="col">10 Cents</th>
+                  <th scope="col">25 Cents</th>
+                  <th scope="col">50 Cents</th>
+                  <th scope="col">1 Dollar</th>
+                  <th scope="col">2 Dollars</th>
+                  <th scope="col">5 Dollars</th>
+                  <th scope="col">10 Dollars</th>
+                  <th scope="col">20 Dollars</th>
+                  <th scope="col">50 Dollars</th>
+                  <th scope="col">100 Dollars</th>
+                  <th scope="col">Bag Amount</th>
+                  <th scope="col">Locker Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in data %}
+                <tr>
+                  <td>{{ row[0] }}</td>
+                  <td>{{ row[1] }}</td>
+                  <td>{{ row[2] }}</td>
+                  <td>{{ row[3] }}</td>
+                  <td>{{ row[4] }}</td>
+                  <td>{{ row[5] }}</td>
+                  <td>{{ row[6] }}</td>
+                  <td>{{ row[7] }}</td>
+                  <td>{{ row[8] }}</td>
+                  <td>{{ row[9] }}</td>
+                  <td>{{ row[10] }}</td>
+                  <td>{{ row[11] }}</td>
+                  <td>{{ row[12] }}</td>
+                  <td>{{ row[13] }}</td>
+                  <td>{{ row[14] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+      </div>
     <script src="/js/index.js"></script>
 </body>
 
