@@ -16,7 +16,7 @@ function calculate_locker_value(event) {
             var factor = 1;
         };
         
-        final_value = parseInt(denomination_value) * factor * parseInt(element.value);
+        final_value = isNaN(parseInt(element.value)) ? 0 : parseInt(denomination_value) * factor * parseInt(element.value);
         total = total + final_value;
         // console.log({
         //     id_: id_,
@@ -38,4 +38,5 @@ function calculate_locker_value(event) {
 
 for (var element of allNumeric) {
     element.addEventListener('change', calculate_locker_value);
+    element.addEventListener('input', calculate_locker_value);
 }

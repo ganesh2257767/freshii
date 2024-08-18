@@ -17,20 +17,20 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand mx-auto" href="#">
                 <img src="/img/Freshii_logo.svg.png" width="150" height="100" alt="Logo">
             </a>
             <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button> -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Freshii</a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </nav>
     <form class="freshii-form" method="POST" , action="{{ url_for('index') }}">
@@ -59,53 +59,53 @@
                     <div class="row mb-4">
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="c1">¢1</label>
-                            <input type="number" min=0 value=0 step=1 id="c1" name="c1" class="form-control p-2">
+                            <input type="number" min=0 placeholder="0" step=1 id="c1" name="c1" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="c5">¢5</label>
-                            <input type="number" min=0 value=0 step=1 id="c5" name="c5" class="form-control p-2">
+                            <input type="number" min=0 placeholder="0" step=1 id="c5" name="c5" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="c10">¢10</label>
-                            <input type="number" min=0 value=0 step=1 id="c10" name="c10" class="form-control p-2">
+                            <input type="number" min=0 placeholder="0" step=1 id="c10" name="c10" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="c25">¢25</label>
-                            <input type="number" min=0 value=0 step=1 id="c25" name="c25" class="form-control p-2">
+                            <input type="number" min=0 placeholder="0" step=1 id="c25" name="c25" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="c50">¢50</label>
-                            <input type="number" min=0 value=0 step=1 id="c50" name="c50" class="form-control p-2">
+                            <input type="number" min=0 placeholder="0" step=1 id="c50" name="c50" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="d1">$1</label>
-                            <input type="number" min=0 value=0 step=1 id="d1" name="d1" class="form-control p-2">
+                            <input type="number" min=0 placeholder="0" step=1 id="d1" name="d1" class="form-control p-2">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="d2">$2</label>
-                            <input type="number" min=0 value=0 step=1 id="d2" name="d2" class="form-control p-2">
+                            <input type="number" min=0 placeholder="0" step=1 id="d2" name="d2" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="d5">$5</label>
-                            <input type="number" min=0 value=0 step=1 id="d5" name="d5" class="form-control p-2">
+                            <input type="number" min=0 placeholder="0" step=1 id="d5" name="d5" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="d10">$10</label>
-                            <input type="number" min=0 value=0 step=1 id="d10" name="d10" class="form-control p-2">
+                            <input type="number" min=0 placeholder="0" step=1 id="d10" name="d10" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="d20">$20</label>
-                            <input type="number" min=0 value=0 step=1 id="d20" name="d20" class="form-control p-2">
+                            <input type="number" min=0 placeholder="0" step=1 id="d20" name="d20" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="d50">$50</label>
-                            <input type="number" min=0 value=0 step=1 id="d50" name="d50" class="form-control p-2">
+                            <input type="number" min=0 placeholder="0" step=1 id="d50" name="d50" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="d100">$100</label>
-                            <input type="number" min=0 value=0 step=1 id="d100" name="d100" class="form-control p-2">
+                            <input type="number" min=0 placeholder="0" step=1 id="d100" name="d100" class="form-control p-2">
                         </div>
                     </div>
                 </div>
