@@ -7,19 +7,19 @@ from mysql.connector.errors import IntegrityError
 # 2. Optional: Scroll to the table after adding a record
 # 3. Update the record if the date already exists
 
-# mydb = mysql.connector.connect(
-#     host="mysql.railway.internal",
-#     user="root",
-#     password="AlciOgdqfDZHzmBWPtuGDrYpuglPEqme",
-#     database="railway"
-# )
-
 mydb = mysql.connector.connect(
-    host="localhost",
+    host="mysql.railway.internal",
     user="root",
-    password="root",
-    database="freshii"
+    password="AlciOgdqfDZHzmBWPtuGDrYpuglPEqme",
+    database="railway"
 )
+
+# mydb = mysql.connector.connect(
+#     host="localhost",
+#     user="root",
+#     password="root",
+#     database="freshii"
+# )
 
 app = Flask(__name__, template_folder="templates",
             static_folder="static", static_url_path="/")
