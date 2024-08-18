@@ -101,3 +101,7 @@ label {
     background-color: #3e8e41;
     color: white;
 }
+
+.rounded {
+    border-radius: 10px;
+}

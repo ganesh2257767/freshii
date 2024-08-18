@@ -45,7 +45,7 @@
                 {% for category, message in messages%}
                 <div class="col-md-6 mb-3">
                     <label class="mb-2"></label>
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-{{ category }}" role="alert">
                        {{ message }}
                       </div>
                 </div>
@@ -129,7 +129,7 @@
     </form>
     <div class="container my-5 py-5">
         <div class="container-table">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped rounded-3">
               <thead class="thead-green">
                 <tr>
                   <th scope="col">Date</th>
