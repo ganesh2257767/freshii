@@ -53,6 +53,17 @@ def update_data(form_data):
         return True
 
 
+def delete_data(date):
+    sql = "DELETE FROM freshii_daily WHERE date = %s"
+    val = [date]
+    try:
+        cursor.execute(sql, val)
+    except Exception as e:
+        return False
+    else:
+        mydb.commit()
+        return True
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "GET":
@@ -70,8 +81,11 @@ def index():
             flash('Data added successfully', 'success')
         return redirect(url_for("index"))
 
-    
 
+@app.route("/delete/<date>", methods=["GET", "POST"])
+def delete(date):
+    if delete_data(date):
+        return redirect(url_for("index"))
 
 if __name__ == "__main__":
     app.run(debug=True)

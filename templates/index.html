@@ -150,6 +150,7 @@
                 </tr>
               </thead>
               <tbody>
+                {% if data %}
                 {% for row in data %}
                 <tr>
                   <td>{{ row[0] }}</td>
@@ -169,6 +170,11 @@
                   <td>{{ row[14] }}</td>
                 </tr>
                 {% endfor %}
+                {% else %}
+                <tr>
+                  <td class="text-center" colspan="15">No data found.</td>
+                </tr>
+                {% endif %}
               </tbody>
             </table>
         </div>
