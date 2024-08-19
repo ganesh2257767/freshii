@@ -1,25 +1,17 @@
 from flask import Flask, render_template, request, url_for, flash
 import mysql.connector
 from mysql.connector.errors import IntegrityError
+import os
+import dotenv
 
-# TODO
-# 1. Add success message on successfully adding a record
-# 2. Optional: Scroll to the table after adding a record
-# 3. Update the record if the date already exists
+dotenv.load_dotenv()
 
 mydb = mysql.connector.connect(
-    host="mysql.railway.internal",
-    user="root",
-    password="AlciOgdqfDZHzmBWPtuGDrYpuglPEqme",
-    database="railway"
+    host=os.getenv("MYSQL_HOST"),
+    user=os.getenv("MYSQL_USER"),
+    password=os.getenv("MYSQL_PASSWORD"),
+    database=os.getenv("MYSQL_DB")
 )
-
-# mydb = mysql.connector.connect(
-#     host="localhost",
-#     user="root",
-#     password="root",
-#     database="freshii"
-# )
 
 app = Flask(__name__, template_folder="templates",
             static_folder="static", static_url_path="/")
