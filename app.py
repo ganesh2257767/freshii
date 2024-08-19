@@ -61,10 +61,11 @@ def index():
     
     if request.method == "POST":
         form_data = request.form
-        print("Form Data", form_data)
         if not insert_data(form_data):
-            update_data(form_data)
-            flash(f'Data for this date: {form_data["date"]} already exists, data has been updated', 'info')
+            if update_data(form_data):
+                flash(f'Data for this date: {form_data["date"]} already exists, data has been updated', 'info')
+            else:
+                flash("Something went wrong, please try again", 'danger')
         else:
             flash('Data added successfully', 'success')
         return redirect(url_for("index"))
