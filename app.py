@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, flash
+from flask import Flask, render_template, request, url_for, flash, redirect
 import mysql.connector
 from mysql.connector.errors import IntegrityError
 import os
@@ -26,34 +26,50 @@ def refresh_data():
     data = cursor.fetchall()
     return data
 
+def insert_data(form_data):
+    sql = "INSERT INTO freshii_daily (date, c1, c5, c10, c25, c50, d1, d2, d5, d10, d20, d50, d100, bag_amount, locker_amount) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    val = [form_data.get(key) if value else '0' for key, value in form_data.items()]
+    print(val)
+    try:
+        cursor.execute(sql, val)
+    except IntegrityError as e:
+        return False
+    except Exception as e:
+        return f"{type(e) - str(e)}"
+    else:
+        mydb.commit()
+        return True
+    
+def update_data(form_data):
+    sql = "UPDATE freshii_daily SET c1 = %s, c5 = %s, c10 = %s, c25 = %s, c50 = %s, d1 = %s, d2 = %s, d5 = %s, d10 = %s, d20 = %s, d50 = %s, d100 = %s, bag_amount = %s, locker_amount = %s WHERE date = %s"
+    val_temp = [form_data.get(key) if value else '0' for key, value in form_data.items()]
+    val = val_temp[1:] + [val_temp[0]]
+    try:
+        cursor.execute(sql, val)
+    except Exception as e:
+        return False
+    else:
+        mydb.commit()
+        return True
+
+
 @app.route("/", methods=["GET", "POST"])
 def index():
+    if request.method == "GET":
+        data = refresh_data()
+        return render_template("index.html", data=data)
+    
     if request.method == "POST":
         form_data = request.form
         print("Form Data", form_data)
-
-        sql = "INSERT INTO freshii_daily (date, c1, c5, c10, c25, c50, d1, d2, d5, d10, d20, d50, d100, bag_amount, locker_amount) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        val = [form_data.get(key) if value else '0' for key, value in form_data.items()]
-        print(val)
-        try:
-            cursor.execute(sql, val)
-        except IntegrityError as e:
-            print("Except")
-            sql = "UPDATE freshii_daily SET c1 = %s, c5 = %s, c10 = %s, c25 = %s, c50 = %s, d1 = %s, d2 = %s, d5 = %s, d10 = %s, d20 = %s, d50 = %s, d100 = %s, bag_amount = %s, locker_amount = %s WHERE date = %s"
-            # val = (form_data["c1"], form_data["c5"], form_data["c10"], form_data["c25"], form_data["c50"], form_data["d1"], form_data["d2"], form_data["d5"], form_data["d10"], form_data["d20"], form_data["d50"], form_data["d100"], form_data["bag"], form_data["locker"], form_data["date"])
-            val_temp = [form_data.get(key) if value else '0' for key, value in form_data.items()]
-            val = val_temp[1:] + [val_temp[0]]
-            cursor.execute(sql, val)
+        if not insert_data(form_data):
+            update_data(form_data)
             flash(f'Data for this date: {form_data["date"]} already exists, data has been updated', 'info')
-
         else:
-            print("Else")
             flash('Data added successfully', 'success')
+        return redirect(url_for("index"))
 
-        mydb.commit()
-
-    data = refresh_data()
-    return render_template("index.html", data=data)
+    
 
 
 if __name__ == "__main__":
