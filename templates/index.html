@@ -58,24 +58,24 @@
                 <div class="col-md-12 mb-3">
                     <div class="row mb-4">
                         <div class="col-md-2 mb-3">
-                            <label class="mb-2" for="c1">¢1</label>
-                            <input type="number" min=0 placeholder="0" step=1 id="c1" name="c1" class="form-control p-2">
+                            <label class="mb-2" for="c1">$0.01</label>
+                            <input type="number" min=0 placeholder="0" step=1 id="d0.01" name="d0.01" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
-                            <label class="mb-2" for="c5">¢5</label>
-                            <input type="number" min=0 placeholder="0" step=1 id="c5" name="c5" class="form-control p-2">
+                            <label class="mb-2" for="c5">$0.05</label>
+                            <input type="number" min=0 placeholder="0" step=1 id="d0.05" name="d0.05" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
-                            <label class="mb-2" for="c10">¢10</label>
-                            <input type="number" min=0 placeholder="0" step=1 id="c10" name="c10" class="form-control p-2">
+                            <label class="mb-2" for="c10">$0.1</label>
+                            <input type="number" min=0 placeholder="0" step=1 id="d0.1" name="d0.1" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
-                            <label class="mb-2" for="c25">¢25</label>
-                            <input type="number" min=0 placeholder="0" step=1 id="c25" name="c25" class="form-control p-2">
+                            <label class="mb-2" for="c25">$0.25</label>
+                            <input type="number" min=0 placeholder="0" step=1 id="d0.25" name="d0.25" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
-                            <label class="mb-2" for="c50">¢50</label>
-                            <input type="number" min=0 placeholder="0" step=1 id="c50" name="c50" class="form-control p-2">
+                            <label class="mb-2" for="c50">$0.5</label>
+                            <input type="number" min=0 placeholder="0" step=1 id="d0.5" name="d0.5" class="form-control p-2">
                         </div>
                         <div class="col-md-2 mb-3">
                             <label class="mb-2" for="d1">$1</label>
@@ -112,12 +112,20 @@
             </div>
             <div class="row mb-4">
                 <div class="col-md-2">
-                    <label class="mb-2" for="bag">Bag Amount</label>
-                    <input type="text" id="bag" value=150 name="bag" class="form-control p-2" readonly>
+                    <label class="mb-2" for="total">Total</label>
+                    <input type="text" id="total" value=0.00 name="total" class="form-control p-2" readonly>
                 </div>
                 <div class="col-md-2">
-                    <label class="mb-2" for="locker">Locker Amount</label>
-                    <input type="text" id="locker" value=0 name="locker" class="form-control p-2" readonly>
+                    <label class="mb-2" for="rolls">Coin Rolls</label>
+                    <input type="text" id="rolls" value=0.00 name="rolls" class="form-control p-2" readonly>
+                </div>
+                <div class="col-md-2">
+                    <label class="mb-2" for="float">Float</label>
+                    <input type="text" id="float" value=150.00 name="float" class="form-control p-2" readonly>
+                </div>
+                <div class="col-md-2">
+                    <label class="mb-2" for="drop">Cash Drop</label>
+                    <input type="text" id="drop" value=0.00 name="drop" class="form-control p-2" readonly>
                 </div>
             </div>
             <div class="row mb-4">
