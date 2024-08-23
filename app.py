@@ -64,7 +64,7 @@ def delete_data(date):
         mydb.commit()
         return True
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/dashboard", methods=["GET", "POST"])
 def index():
     if request.method == "GET":
         data = refresh_data()
@@ -80,6 +80,10 @@ def index():
         else:
             flash('Data added successfully', 'success')
         return redirect(url_for("index"))
+    
+@app.route("/", methods=["GET", "POST"])
+def login():
+    return render_template("login.html")
 
 
 @app.route("/delete/<date>", methods=["GET", "POST"])
