@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<form class="freshii-form" method="POST" , action="{{ url_for('index') }}">
+<form class="freshii-form" method="POST" , action="{{ url_for('dashboard') }}">
     <div class="container mt-5 pt-5">
         <div class="row mb-4">
             <div class="col-md-2 mb-3">
@@ -26,27 +26,27 @@
                 <div class="row mb-4">
                     <div class="col-md-2 mb-3">
                         <label class="mb-2" for="d0.01">$0.01</label>
-                        <input type="number" min=0 placeholder="0" step=1 id="d0.01" name="d0.01"
+                        <input type="number" min=0 placeholder="0" step=1 id="d0.01" name="c1"
                             class="form-control p-2" oninput="calculateAllValue()">
                     </div>
                     <div class="col-md-2 mb-3">
                         <label class="mb-2" for="d0.05">$0.05</label>
-                        <input type="number" min=0 placeholder="0" step=1 id="d0.05" name="d0.05"
+                        <input type="number" min=0 placeholder="0" step=1 id="d0.05" name="c5"
                             class="form-control p-2" oninput="calculateAllValue()">
                     </div>
                     <div class="col-md-2 mb-3">
                         <label class="mb-2" for="d0.1">$0.1</label>
-                        <input type="number" min=0 placeholder="0" step=1 id="d0.1" name="d0.1" class="form-control p-2"
+                        <input type="number" min=0 placeholder="0" step=1 id="d0.1" name="c10" class="form-control p-2"
                             oninput="calculateAllValue()">
                     </div>
                     <div class="col-md-2 mb-3">
                         <label class="mb-2" for="d0.25">$0.25</label>
-                        <input type="number" min=0 placeholder="0" step=1 id="d0.25" name="d0.25"
+                        <input type="number" min=0 placeholder="0" step=1 id="d0.25" name="c25"
                             class="form-control p-2" oninput="calculateAllValue()">
                     </div>
                     <div class="col-md-2 mb-3">
                         <label class="mb-2" for="d0.5">$0.5</label>
-                        <input type="number" min=0 placeholder="0" step=1 id="d0.5" name="d0.5" class="form-control p-2"
+                        <input type="number" min=0 placeholder="0" step=1 id="d0.5" name="c50" class="form-control p-2"
                             oninput="calculateAllValue()">
                     </div>
                     <div class="col-md-2 mb-3">
@@ -92,19 +92,34 @@
         <div class="row mb-4">
             <div class="col-md-2">
                 <label class="mb-2" for="total">Total</label>
-                <input type="text" id="total" value=0 name="total" class="form-control p-2" readonly>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">$</span>
+                    <input type="text" id="total" value="0" name="total_value" class="form-control p-2" readonly>
+                </div>
             </div>
             <div class="col-md-2">
                 <label class="mb-2" for="rolls">Coin Rolls</label>
-                <input type="text" id="rolls" value=0 name="rolls" class="form-control p-2" readonly>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">$</span>
+                <input type="text" id="rolls" placeholder="0" name="rolls" class="form-control p-2" oninput="calculateAllValue()" required>
+                </div>
             </div>
             <div class="col-md-2">
                 <label class="mb-2" for="float">Float</label>
-                <input type="text" id="float" value=150 name="float" class="form-control p-2" readonly>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">$</span>
+                <input type="text" id="float" value="150" name="float_value" class="form-control p-2" readonly>
+                </div>
             </div>
             <div class="col-md-2">
                 <label class="mb-2" for="drop">Cash Drop</label>
-                <input type="text" id="drop" value=0 name="drop" class="form-control p-2" readonly>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">$</span>
+                <input type="text" id="drop" value="0" name="cash_drop" class="form-control p-2" readonly>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="hidden" id="entered_by" value="gkutty" name="entered_by" class="form-control p-2" readonly>
             </div>
         </div>
         <div class="row mb-4">
@@ -114,7 +129,7 @@
         </div>
     </div>
 </form>
-<div class="container my-5 py-5">
+<div class="container-fluid my-5 py-5">
     <div class="container-table">
         <table class="table table-bordered table-striped rounded-3">
             <thead class="thead-green">
@@ -132,34 +147,40 @@
                     <th scope="col">20 Dollars</th>
                     <th scope="col">50 Dollars</th>
                     <th scope="col">100 Dollars</th>
-                    <th scope="col">Bag Amount</th>
-                    <th scope="col">Locker Amount</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Coin Rolls</th>
+                    <th scope="col">Float</th>
+                    <th scope="col">Cash Drop</th>
+                    <th scope="col">Entered By</th>
                 </tr>
             </thead>
             <tbody>
                 {% if data %}
                 {% for row in data %}
                 <tr>
-                    <td>{{ row[0] }}</td>
-                    <td>{{ row[1] }}</td>
-                    <td>{{ row[2] }}</td>
-                    <td>{{ row[3] }}</td>
-                    <td>{{ row[4] }}</td>
-                    <td>{{ row[5] }}</td>
-                    <td>{{ row[6] }}</td>
-                    <td>{{ row[7] }}</td>
-                    <td>{{ row[8] }}</td>
-                    <td>{{ row[9] }}</td>
-                    <td>{{ row[10] }}</td>
-                    <td>{{ row[11] }}</td>
-                    <td>{{ row[12] }}</td>
-                    <td>{{ row[13] }}</td>
-                    <td>{{ row[14] }}</td>
+                    <td>{{ row.date }}</td>
+                    <td>{{ row.c1 }}</td>
+                    <td>{{ row.c5 }}</td>
+                    <td>{{ row.c10 }}</td>
+                    <td>{{ row.c25 }}</td>
+                    <td>{{ row.c50 }}</td>
+                    <td>{{ row.d1 }}</td>
+                    <td>{{ row.d2 }}</td>
+                    <td>{{ row.d5 }}</td>
+                    <td>{{ row.d10 }}</td>
+                    <td>{{ row.d20 }}</td>
+                    <td>{{ row.d50 }}</td>
+                    <td>{{ row.d100 }}</td>
+                    <td>${{ row.total_value }}</td>
+                    <td>${{ row.rolls }}</td>
+                    <td>${{ row.float_value }}</td>
+                    <td>${{ row.cash_drop }}</td>
+                    <td>{{ row.entered_by }}</td>
                 </tr>
                 {% endfor %}
                 {% else %}
                 <tr>
-                    <td class="text-center" colspan="15">No data found.</td>
+                    <td class="text-center" colspan="18">No data found.</td>
                 </tr>
                 {% endif %}
             </tbody>

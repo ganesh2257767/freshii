@@ -4,7 +4,7 @@ body {
 }
 
 .navbar {
-    background-color: #8b9467;
+    /* background-color: #8b9467; */
     border-bottom: 2px solid #3e8e41;
 }
 
@@ -58,16 +58,11 @@ body {
 }
 
 .input-group-text {
-    background-color: #8b9467;
+    background-color: #3e8e41;
     color: #fff;
     border-color: #3e8e41;
     padding: 10px;
     border-radius: 5px;
-}
-
-.input-group-text:hover {
-    background-color: #3e8e41;
-    color: #fff;
 }
 
 .btn-primary {
