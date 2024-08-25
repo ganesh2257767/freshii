@@ -21,28 +21,6 @@
 </head>
 
 <body>
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            {% if current_user.is_authenticated %}
-            <span>Welcome, {{ current_user.username | title }}</span>
-            <a class="navbar-brand" href="{{ url_for('dashboard')}}">
-                <img src="/img/Freshii_logo.svg.png" width="150" height="100">
-            </a>
-            {% else %}
-            <a class="navbar-brand" href="{{ url_for('login')}}">
-                <img src="/img/Freshii_logo.svg.png" width="150" height="100">
-            </a>
-            {% endif %}
-            
-            {% if current_user.is_authenticated %}
-                {% if current_user.role == "admin" %}
-                    <a  class="btn btn-info" href="{{ url_for('admin.index')}}">Admin</a>
-                {% endif %}
-
-                <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a>
-            {% endif %}
-        </div>
-    </nav> -->
     <nav class="navbar navbar-expand-sm navbar-ligh bg-ligh">
         <div class="container">	    
           <div class="collapse navbar-collapse " id="navbarSupportedContent">
@@ -50,7 +28,7 @@
             <span class="navbar-nav me-auto order-0 ">Welcome, {{ current_user.username | title }}</span>
             {% endif %}
             <div class="mx-auto">
-              <a class="navbar-brand " href="#">
+              <a class="navbar-brand " href="{{ url_for('dashboard') }}">
                 <img src="/img/Freshii_logo.svg.png" width="150" height="100">
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

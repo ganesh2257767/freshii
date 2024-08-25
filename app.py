@@ -8,17 +8,9 @@ from flask_bcrypt import Bcrypt
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 
-# TODO
-# Add a new column "updated_by_user" to the database
-# Date column returns to "not a primary key" after db migrate and upgrade
-
-
 dotenv.load_dotenv()
-PGSQL_HOST = os.getenv("PGSQL_HOST")
-PGSQL_USER = os.getenv("PGSQL_USER")
-PGSQL_PASSWORD = os.getenv("PGSQL_PASSWORD")
-PGSQL_DB = os.getenv("PGSQL_DB")
-PGSQL_PORT = os.getenv("PGSQL_PORT")
+
+DB_URI = os.getenv("DB_URI")
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 admin = Admin()
@@ -31,7 +23,7 @@ def create_app():
     
     app = Flask(__name__, template_folder="templates", static_folder="static", static_url_path="/")
     app.config['SECRET_KEY'] = SECRET_KEY
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{PGSQL_USER}:{PGSQL_PASSWORD}@{PGSQL_HOST}:{PGSQL_PORT}/{PGSQL_DB}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
 
     admin.init_app(app)
     db.init_app(app)
