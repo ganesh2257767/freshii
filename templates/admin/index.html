@@ -1,0 +1,9 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+{% if current_user.is_authenticated and current_user.role == "admin"%}
+    <h1>Admin Dashboard</h1>
+{% else %}
+    <h1>You're not supposed to be here, please login <a href="{{ url_for('dashboard')}}">here</a>.</h1>
+{% endif %}
+{% endblock %}

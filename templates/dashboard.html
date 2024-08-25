@@ -12,7 +12,7 @@
             {% for category, message in messages%}
             <div class="col-md-6 mb-3">
                 <label class="mb-2"></label>
-                <div class="alert alert-{{ category }}" role="alert">
+                <div class="alert alert-{{ category }} text-center" role="alert">
                     {{ message }}
                 </div>
             </div>
@@ -118,9 +118,6 @@
                 <input type="text" id="drop" value="0" name="cash_drop" class="form-control p-2" readonly>
                 </div>
             </div>
-            <div class="col-md-2">
-                <input type="hidden" id="entered_by" value="gkutty" name="entered_by" class="form-control p-2" readonly>
-            </div>
         </div>
         <div class="row mb-4">
             <div class="col-md-12">
@@ -152,6 +149,7 @@
                     <th scope="col">Float</th>
                     <th scope="col">Cash Drop</th>
                     <th scope="col">Entered By</th>
+                    <th scope="col">Updated By</th>
                 </tr>
             </thead>
             <tbody>
@@ -175,7 +173,8 @@
                     <td>${{ row.rolls }}</td>
                     <td>${{ row.float_value }}</td>
                     <td>${{ row.cash_drop }}</td>
-                    <td>{{ row.entered_by }}</td>
+                    <td>{{ row.entered_by_user }}</td>
+                    <td>{{ row.updated_by_user }}</td>
                 </tr>
                 {% endfor %}
                 {% else %}

@@ -3,8 +3,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <h1 class="text-center">Login</h1>
-            <form class="freshii-form" method="POST" action="{{ url_for('login') }}">
+            <h1 class="text-center">Register</h1>
+            <form class="freshii-form" method="POST" action="{{ url_for('register') }}">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" class="form-control" required>
@@ -27,6 +27,7 @@
                     <label class="mb-2"></label>
                     <div class="alert alert-{{ category }} text-center" role="alert">
                         {{ message }}
+                        Click <a href="{{ url_for('login') }}">here</a> to return to the Login page.
                     </div>
                 </div>
                 {%endfor%}
