@@ -101,7 +101,7 @@
                 <label class="mb-2" for="rolls">Coin Rolls</label>
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon1">$</span>
-                <input type="text" id="rolls" placeholder="0" name="rolls" class="form-control p-2" oninput="calculateAllValue()" required>
+                <input type="number" min=0 step=1 id="rolls" placeholder="0" name="rolls" class="form-control p-2" oninput="calculateAllValue()" required>
                 </div>
             </div>
             <div class="col-md-2">
@@ -179,7 +179,7 @@
                 {% endfor %}
                 {% else %}
                 <tr>
-                    <td class="text-center" colspan="18">No data found.</td>
+                    <td class="text-center" colspan="19">No data found.</td>
                 </tr>
                 {% endif %}
             </tbody>
