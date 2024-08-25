@@ -2,8 +2,14 @@
 
 {% block body %}
 {% if current_user.is_authenticated and current_user.role == "admin"%}
-    <h1>Admin Dashboard</h1>
+<h1 class="text-center mb-5">Admin Dashboard</h1>
+<div class="container text-center mx-5 my-5 px-5 py-5">
+    <a class="btn btn-success" role="button" href="{{ url_for('dashboard')}}">Freshii Dashboard</a>
+    <a class="btn btn-info" role="button" href="{{ url_for('user_view.index_view')}}">User Management</a>
+    <a class="btn btn-info" role="button" href="{{ url_for('freshii_data_view.index_view')}}">Freshii Data Management</a>
+    <a class="btn btn-danger" role="button" href="{{ url_for('logout')}}">Logout</a>
+</div>
 {% else %}
-    <h1>You're not supposed to be here, please login <a href="{{ url_for('dashboard')}}">here</a>.</h1>
+<h1>You're not supposed to be here, please login <a href="{{ url_for('dashboard')}}">here</a>.</h1>
 {% endif %}
 {% endblock %}

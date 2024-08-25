@@ -21,14 +21,10 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container justify-content-around">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
             {% if current_user.is_authenticated %}
-            {% if current_user.role == "admin" %}
-            <span>Welcome, <a href="{{ url_for('admin.index')}}">{{ current_user.username | title }}</a></span>
-            {% else %}
             <span>Welcome, {{ current_user.username | title }}</span>
-            {% endif %}
             <a class="navbar-brand" href="{{ url_for('dashboard')}}">
                 <img src="/img/Freshii_logo.svg.png" width="150" height="100">
             </a>
@@ -39,10 +35,43 @@
             {% endif %}
             
             {% if current_user.is_authenticated %}
-            <a href="{{ url_for('logout') }}" class="btn btn-primary">Logout</a>
+                {% if current_user.role == "admin" %}
+                    <a  class="btn btn-info" href="{{ url_for('admin.index')}}">Admin</a>
+                {% endif %}
+
+                <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a>
             {% endif %}
         </div>
-    </nav>
+    </nav> -->
+    <nav class="navbar navbar-expand-sm navbar-ligh bg-ligh">
+        <div class="container">	    
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            {% if current_user.is_authenticated %}
+            <span class="navbar-nav me-auto order-0 ">Welcome, {{ current_user.username | title }}</span>
+            {% endif %}
+            <div class="mx-auto">
+              <a class="navbar-brand " href="#">
+                <img src="/img/Freshii_logo.svg.png" width="150" height="100">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          </div>
+          {% if current_user.is_authenticated%}
+            <ul class="navbar-nav ms-auto">
+                {% if current_user.role == "admin" %}
+                <li class="nav-item mx-2">
+                    <a class="btn btn-info" href="{{ url_for('admin.index')}}">Admin</a>
+                </li>
+                {% endif %}
+                <li class="nav-item mx-2">
+                    <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
     {% block content %}
     {% endblock %}
 

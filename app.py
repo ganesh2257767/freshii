@@ -38,8 +38,8 @@ def create_app():
     bcrypt.init_app(app)
     
     
-    admin.add_view(RestrictedAdminView(User, db.session))
-    admin.add_view(RestrictedAdminView(FreshiiData, db.session))
+    admin.add_view(RestrictedAdminView(User, db.session, endpoint="user_view"))
+    admin.add_view(RestrictedAdminView(FreshiiData, db.session, endpoint="freshii_data_view"))
     
     login_manager = LoginManager()
     login_manager.init_app(app)
